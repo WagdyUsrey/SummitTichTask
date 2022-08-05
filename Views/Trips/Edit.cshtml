@@ -1,0 +1,54 @@
+﻿@model SummitTichTask.Models.Trip
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Trip</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="Destination" class="control-label"></label>
+                <input asp-for="Destination" class="form-control" />
+                <span asp-validation-for="Destination" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReservationCount" class="control-label"></label>
+                <input asp-for="ReservationCount" class="form-control" />
+                <span asp-validation-for="ReservationCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SeatCost" class="control-label"></label>
+                <input asp-for="SeatCost" class="form-control" />
+                <span asp-validation-for="SeatCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GoingDate" class="control-label"></label>
+                <input asp-for="GoingDate" class="form-control" />
+                <span asp-validation-for="GoingDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ComingBackDate" class="control-label"></label>
+                <input asp-for="ComingBackDate" class="form-control" />
+                <span asp-validation-for="ComingBackDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

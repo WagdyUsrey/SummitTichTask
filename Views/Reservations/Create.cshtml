@@ -1,0 +1,58 @@
+﻿@model SummitTichTask.Models.Reservation
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Reservation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Name</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TripID" class="control-label">Trip Destination</label>
+                <select class="form-control">
+                    @foreach (var item in ViewBag.tripList as List<Tuple<string, int>>)
+                    {
+                    <option value="" disabled selected hidden>choose trip destination</option>
+
+                        <option value=@item.Item2 >
+                            @item.Item1
+                        </option>
+                    }
+                </select>
+                <span asp-validation-for="TripID" class="text-danger"></span>
+                </div>
+            <div class="form-group">
+                <label asp-for="reservedBy" class="control-label">Reserved By</label>
+                <input asp-for="reservedBy" class="form-control" />
+                <span asp-validation-for="reservedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddedDate" class="control-label">Added Date</label>
+                <input asp-for="AddedDate" class="form-control" />
+                <span asp-validation-for="AddedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
